@@ -53,7 +53,7 @@ export function HeroSection() {
 
         <motion.p
           key={locale + "-tagline"}
-          className={`text-xl md:text-2xl text-foreground/70 mb-8 font-light whitespace-nowrap tracking-wide ${
+          className={`text-xl md:text-2xl text-foreground/70 mb-8 font-light md:whitespace-nowrap tracking-wide ${
             locale === "ko" ? "font-serif" : "font-sans"
           }`}
           initial={{ opacity: 0, y: 20 }}
