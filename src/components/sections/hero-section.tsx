@@ -20,7 +20,7 @@ export function HeroSection() {
             rotate: { duration: 30, repeat: Infinity, ease: "linear" },
             scale: { duration: 15, repeat: Infinity, ease: "easeInOut" },
           }}
-          className="absolute w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-gradient-to-tr from-orange-400/20 to-transparent dark:from-orange-600/10 dark:to-transparent rounded-full opacity-60 blur-3xl mix-blend-multiply dark:mix-blend-screen"
+          className="absolute w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-gradient-to-tr from-orange-400/20 to-transparent dark:from-orange-600/10 dark:to-transparent rounded-full opacity-60"
         />
         <motion.div
           animate={{ rotate: -360, scale: [1, 1.2, 1] }}
@@ -28,7 +28,7 @@ export function HeroSection() {
             rotate: { duration: 40, repeat: Infinity, ease: "linear" },
             scale: { duration: 20, repeat: Infinity, ease: "easeInOut" },
           }}
-          className="absolute w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-gradient-to-bl from-rose-400/10 to-transparent dark:from-rose-600/10 dark:to-transparent rounded-full opacity-50 blur-3xl mix-blend-multiply dark:mix-blend-screen translate-x-20 translate-y-20"
+          className="absolute w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-gradient-to-bl from-rose-400/10 to-transparent dark:from-rose-600/10 dark:to-transparent rounded-full opacity-50 translate-x-20 translate-y-20"
         />
       </div>
 
