@@ -20,6 +20,7 @@ export function TeamMemberCard({
       className="flex flex-col items-center"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
+
       viewport={{ once: true, margin: "-100px" }}
       transition={{
         duration: 0.8,
@@ -47,16 +48,14 @@ export function TeamMemberCard({
         {member.name[locale]}
       </h3>
 
-      <motion.a
+      <a
         href={member.githubUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center w-10 h-10 rounded-full border border-foreground/10 hover:border-foreground/30 hover:bg-white/10 transition-all duration-300 cursor-pointer"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+        className="flex items-center justify-center w-10 h-10 rounded-full border border-foreground/10 hover:border-foreground/30 hover:bg-white/10 hover:scale-[1.15] transition-all duration-300 cursor-pointer"
       >
         <Github className="w-4 h-4 opacity-70" />
-      </motion.a>
+      </a>
     </motion.div>
   );
 }
