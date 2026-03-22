@@ -88,7 +88,7 @@ export function HeroSection() {
         >
           <Github className="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity" />
           <span className="tracking-wide">{t.cta}</span>
-          <ArrowRight className="w-5 h-5 ml-1 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:text-orange-500 transition-all" />
+          <ArrowRight className="w-5 h-5 ml-1 text-neutral-400 group-hover:translate-x-1 group-hover:text-orange-500 transition-all" />
         </GlassButton>
       </div>
 
