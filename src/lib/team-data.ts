@@ -9,7 +9,7 @@ export type TeamMember = {
 
 export const teamMembers: TeamMember[] = [
   {
-    name: { ko: "서동준", en: "Seo Dongjoon" },
+    name: { ko: "서동준", en: "Dongjoon Seo" },
     image: "/team/member2.svg",
     hoverColorClass: "group-hover:bg-rose-500 dark:group-hover:bg-rose-600",
     githubUrl: "https://github.com/seoo2001",
