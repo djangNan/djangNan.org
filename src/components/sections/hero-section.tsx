@@ -33,23 +33,89 @@ export function HeroSection() {
       </div>
 
       <div className="z-10 flex flex-col items-center text-center px-6">
-        <motion.h1
-          className="text-7xl md:text-9xl font-bold tracking-tight mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span>d</span>
-          <span className="text-orange-500">j</span>
-          <span>ang</span>
-          <span
-            className="italic text-neutral-800 dark:text-neutral-200"
-            style={{ WebkitTextStroke: "0.5px rgba(120,120,120,0.3)" }}
+        <h1 className="text-7xl md:text-9xl font-bold tracking-tight mb-12">
+          {/* d */}
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-block"
+          >
+            d
+          </motion.span>
+          {/* j: white → orange */}
+          <motion.span
+            initial={{ opacity: 0, y: 20, color: "var(--foreground)" }}
+            animate={{ opacity: 1, y: 0, color: "#f97316" }}
+            transition={{
+              opacity: { duration: 0.5, delay: 0.3 },
+              y: { duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] },
+              color: { duration: 0.8, delay: 1.0, ease: "easeInOut" },
+            }}
+            className="inline-block"
+          >
+            j
+          </motion.span>
+          {/* a */}
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-block"
+          >
+            a
+          </motion.span>
+          {/* n */}
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-block"
+          >
+            n
+          </motion.span>
+          {/* g */}
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-block"
+          >
+            g
+          </motion.span>
+          {/* N: tilt animation */}
+          <motion.span
+            initial={{ opacity: 0, y: 20, rotate: 0 }}
+            animate={{ opacity: 1, y: 0, rotate: [-12, 8, -5, 3, 0] }}
+            transition={{
+              opacity: { duration: 0.5, delay: 0.7 },
+              y: { duration: 0.5, delay: 0.7, ease: [0.16, 1, 0.3, 1] },
+              rotate: { duration: 0.8, delay: 1.1, ease: "easeInOut" },
+            }}
+            className="inline-block italic text-neutral-800 dark:text-neutral-200"
+            style={{ WebkitTextStroke: "0.5px rgba(120,120,120,0.3)", transformOrigin: "bottom center" }}
           >
             N
-          </span>
-          <span>an</span>
-        </motion.h1>
+          </motion.span>
+          {/* a */}
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-block"
+          >
+            a
+          </motion.span>
+          {/* n */}
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-block"
+          >
+            n
+          </motion.span>
+        </h1>
 
         <motion.p
           key={locale + "-tagline"}
@@ -58,7 +124,7 @@ export function HeroSection() {
           }`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
         >
           {t.tagline}
         </motion.p>
@@ -68,7 +134,7 @@ export function HeroSection() {
           className="text-sm md:text-base text-foreground/50 mb-12 font-sans font-light max-w-sm leading-relaxed"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
         >
           {t.aboutText}
         </motion.p>
@@ -82,7 +148,7 @@ export function HeroSection() {
           className="bg-background/50 hover:bg-orange-50/50 dark:hover:bg-orange-950/20 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, delay: 1.7, ease: [0.16, 1, 0.3, 1] }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
