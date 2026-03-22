@@ -5,6 +5,7 @@ import { Github } from "lucide-react";
 import { useLocale } from "@/lib/locale-context";
 import Image from "next/image";
 import type { TeamMember } from "@/lib/team-data";
+import { GlassButton } from "./glass-button";
 
 export function TeamMemberCard({
   member,
@@ -48,14 +49,15 @@ export function TeamMemberCard({
         {member.name[locale]}
       </h3>
 
-      <a
+      <GlassButton
+        as="a"
         href={member.githubUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center w-10 h-10 rounded-full border border-foreground/10 hover:border-foreground/30 hover:bg-white/10 hover:scale-[1.15] transition-all duration-300 cursor-pointer"
+        className="w-10 h-10"
       >
         <Github className="w-4 h-4 opacity-70" />
-      </a>
+      </GlassButton>
     </motion.div>
   );
 }

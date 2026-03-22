@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight, Github } from "lucide-react";
 import { useLocale } from "@/lib/locale-context";
+import { GlassButton } from "../glass-button";
 
 export function HeroSection() {
   const { t, locale } = useLocale();
@@ -72,11 +73,13 @@ export function HeroSection() {
           {t.aboutText}
         </motion.p>
 
-        <motion.a
+        <GlassButton
+          as="a"
+          size="lg"
           href="https://github.com/djangNan"
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-3 text-sm md:text-base font-medium font-sans border border-foreground/10 hover:border-orange-500/40 bg-background/50 hover:bg-orange-50/50 dark:hover:bg-orange-950/20 backdrop-blur-md px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] cursor-pointer"
+          className="bg-background/50 hover:bg-orange-50/50 dark:hover:bg-orange-950/20 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -86,7 +89,7 @@ export function HeroSection() {
           <Github className="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity" />
           <span className="tracking-wide">{t.cta}</span>
           <ArrowRight className="w-5 h-5 ml-1 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:text-orange-500 transition-all" />
-        </motion.a>
+        </GlassButton>
       </div>
 
       {/* Scroll indicator */}
