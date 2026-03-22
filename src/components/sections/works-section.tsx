@@ -41,15 +41,6 @@ export function WorksSection() {
         </div>
       </motion.div>
 
-      <motion.footer
-        className="absolute bottom-6 text-xs text-foreground/30 font-sans"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-      >
-        djangNan.org
-      </motion.footer>
     </section>
   );
 }

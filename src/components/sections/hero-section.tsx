@@ -31,7 +31,7 @@ export function HeroSection() {
         />
       </div>
 
-      <main className="z-10 flex flex-col items-center text-center px-6">
+      <div className="z-10 flex flex-col items-center text-center px-6">
         <motion.h1
           className="text-7xl md:text-9xl font-bold tracking-tight mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -87,7 +87,7 @@ export function HeroSection() {
           <span className="tracking-wide">{t.cta}</span>
           <ArrowRight className="w-5 h-5 ml-1 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:text-orange-500 transition-all" />
         </motion.a>
-      </main>
+      </div>
 
       {/* Scroll indicator */}
       <motion.div
