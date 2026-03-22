@@ -11,9 +11,9 @@ export function LanguageToggle() {
     <GlassButton
       size="sm"
       onClick={toggleLocale}
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.8 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, delay: 1.5 }}
     >
       <Globe className="w-4 h-4 opacity-60" />
       <span>{locale === "ko" ? "EN" : "한글"}</span>
