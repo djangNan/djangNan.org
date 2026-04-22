@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Github } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { useLocale } from "@/lib/locale-context";
 import Image from "next/image";
 import type { TeamMember } from "@/lib/team-data";
@@ -49,15 +49,26 @@ export function TeamMemberCard({
         {member.name[locale]}
       </h3>
 
-      <GlassButton
-        as="a"
-        href={member.githubUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-10 h-10"
-      >
-        <Github className="w-4 h-4 opacity-70" />
-      </GlassButton>
+      <div className="flex gap-2">
+        <GlassButton
+          as="a"
+          href={member.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-10 h-10"
+        >
+          <Github className="w-4 h-4 opacity-70" />
+        </GlassButton>
+        <GlassButton
+          as="a"
+          href={member.linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-10 h-10"
+        >
+          <Linkedin className="w-4 h-4 opacity-70" />
+        </GlassButton>
+      </div>
     </motion.div>
   );
 }

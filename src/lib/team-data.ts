@@ -5,6 +5,7 @@ export type TeamMember = {
   image: string;
   hoverColorClass: string;
   githubUrl: string;
+  linkedinUrl: string;
 };
 
 export const teamMembers: TeamMember[] = [
@@ -13,11 +14,13 @@ export const teamMembers: TeamMember[] = [
     image: "/team/dongjoon-seo.png",
     hoverColorClass: "group-hover:bg-rose-500 dark:group-hover:bg-rose-600",
     githubUrl: "https://github.com/seoo2001",
+    linkedinUrl: "https://www.linkedin.com/in/dongjoonseo01/",
   },
   {
     name: { ko: "이종우", en: "Jongwoo Lee" },
     image: "/team/jongwoo-lee.png",
     hoverColorClass: "group-hover:bg-[#ffb800]",
     githubUrl: "https://github.com/dodolist",
+    linkedinUrl: "https://www.linkedin.com/in/dodol/",
   },
 ];
