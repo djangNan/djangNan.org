@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Serif_KR } from "next/font/google";
+import { Inter, Noto_Serif_KR, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import { LocaleProvider } from "@/lib/locale-context";
 import { ThemeProvider } from "@/lib/theme-context";
 import "./globals.css";
@@ -13,6 +13,18 @@ const notoSerif = Noto_Serif_KR({
   variable: "--font-serif",
   weight: ["400", "500", "700"],
   subsets: ["latin"],
+});
+
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -57,7 +69,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${notoSerif.variable} font-serif antialiased selection:bg-orange-500/30`}
+        className={`${inter.variable} ${notoSerif.variable} ${bricolage.variable} ${jetbrainsMono.variable} antialiased selection:bg-orange-500/30`}
       >
         <ThemeProvider>
           <LocaleProvider>{children}</LocaleProvider>

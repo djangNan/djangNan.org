@@ -20,7 +20,7 @@ export function WorkCard({
     <motion.button
       type="button"
       onClick={onClick}
-      className="group flex flex-col items-center cursor-pointer outline-none"
+      className="group flex flex-col items-stretch text-left cursor-pointer outline-none w-full"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -29,33 +29,34 @@ export function WorkCard({
         delay: index * 0.15,
         ease: [0.16, 1, 0.3, 1],
       }}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
     >
-      <div className="relative w-64 h-44 md:w-80 md:h-52 mb-5 overflow-hidden rounded-3xl border border-foreground/5 shadow-sm group-hover:shadow-lg transition-shadow duration-300">
-        <div
-          className={`absolute inset-0 transition-colors duration-300 ${work.accentClass}`}
-        />
+      <div className="relative w-full aspect-[16/10] mb-5 overflow-hidden bg-foreground/[0.04]">
+        <div className={`absolute inset-0 ${work.accentClass}`} />
         {!imageError ? (
           <Image
             src={work.thumbnail}
             alt={work.name}
             fill
-            sizes="(min-width: 768px) 320px, 256px"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover"
             onError={() => setImageError(true)}
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-2xl md:text-3xl font-bold tracking-tight text-foreground/30">
+            <span className="text-4xl md:text-6xl font-bold tracking-tight text-foreground/30">
               {work.name}
             </span>
           </div>
         )}
       </div>
-      <h3 className="text-xl md:text-2xl font-bold tracking-tight">
-        {work.name}
-      </h3>
+      <div className="flex items-baseline justify-between gap-4">
+        <h3 className="text-display text-2xl md:text-3xl font-semibold tracking-tight group-hover:text-orange-500 transition-colors duration-300">
+          {work.name}
+        </h3>
+        <span className="text-mono-label text-foreground/40 whitespace-nowrap">
+          view →
+        </span>
+      </div>
     </motion.button>
   );
 }

@@ -17,58 +17,72 @@ export function TeamMemberCard({
   const { locale } = useLocale();
 
   return (
-    <motion.div
-      className="flex flex-col items-center"
-      initial={{ opacity: 0, y: 40 }}
+    <motion.article
+      className="flex flex-col"
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-
       viewport={{ once: true, margin: "-100px" }}
       transition={{
         duration: 0.8,
-        delay: index * 0.2,
+        delay: index * 0.1,
         ease: [0.16, 1, 0.3, 1],
       }}
     >
-      <div className="relative w-56 h-72 md:w-64 md:h-80 mb-4 group cursor-pointer">
-        {/* Background card */}
-        <div
-          className={`absolute bottom-0 left-0 right-0 h-56 md:h-64 rounded-3xl transition-colors duration-300 bg-neutral-400 dark:bg-neutral-800 ${member.hoverColorClass}`}
+      <div className="relative w-full max-w-xs aspect-[4/5]">
+        <Image
+          src={member.image}
+          alt={member.name[locale]}
+          fill
+          sizes="(min-width: 768px) 30vw, 80vw"
+          className="object-cover object-top"
         />
-        {/* Person image overlapping above */}
-        <div className="absolute inset-0 z-10 drop-shadow-xl origin-bottom transition-transform duration-300 group-hover:scale-[1.08] pointer-events-none">
-          <Image
-            src={member.image}
-            alt={member.name[locale]}
-            fill
-            className="object-contain object-bottom"
-          />
+      </div>
+
+      <div className="mt-6 flex items-start justify-between gap-4 max-w-md">
+        <div>
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-mono-label text-orange-500">
+              {member.role[locale]}
+            </span>
+            <span className="text-mono-label text-foreground/40">
+              / {member.location[locale]}
+            </span>
+          </div>
+          <h3 className="text-display text-3xl md:text-4xl font-semibold tracking-tight leading-[0.95]">
+            {member.name[locale]}
+          </h3>
+          <p
+            className={`mt-3 text-sm md:text-base text-foreground/60 leading-relaxed ${
+              locale === "ko" ? "font-serif" : "font-sans"
+            }`}
+          >
+            {member.bio[locale]}
+          </p>
+        </div>
+
+        <div className="flex gap-2 shrink-0">
+          <GlassButton
+            as="a"
+            href={member.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${member.name[locale]} GitHub`}
+            className="w-10 h-10"
+          >
+            <Github className="w-4 h-4 opacity-70" />
+          </GlassButton>
+          <GlassButton
+            as="a"
+            href={member.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${member.name[locale]} LinkedIn`}
+            className="w-10 h-10"
+          >
+            <Linkedin className="w-4 h-4 opacity-70" />
+          </GlassButton>
         </div>
       </div>
-
-      <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-2">
-        {member.name[locale]}
-      </h3>
-
-      <div className="flex gap-2">
-        <GlassButton
-          as="a"
-          href={member.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10"
-        >
-          <Github className="w-4 h-4 opacity-70" />
-        </GlassButton>
-        <GlassButton
-          as="a"
-          href={member.linkedinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10"
-        >
-          <Linkedin className="w-4 h-4 opacity-70" />
-        </GlassButton>
-      </div>
-    </motion.div>
+    </motion.article>
   );
 }
