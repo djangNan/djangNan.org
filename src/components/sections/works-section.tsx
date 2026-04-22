@@ -1,15 +1,20 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useState } from "react";
 import { useLocale } from "@/lib/locale-context";
+import { works, type Work } from "@/lib/works-data";
+import { WorkCard } from "@/components/work-card";
+import { WorkDetailModal } from "@/components/work-detail-modal";
 
 export function WorksSection() {
   const { t, locale } = useLocale();
+  const [selected, setSelected] = useState<Work | null>(null);
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-24">
       <motion.div
-        className="text-center mb-16"
+        className="text-center mb-16 md:mb-20"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -27,20 +32,18 @@ export function WorksSection() {
         </p>
       </motion.div>
 
-      <motion.div
-        className="flex flex-col items-center gap-6"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="w-64 h-64 md:w-80 md:h-80 rounded-3xl border border-dashed border-foreground/15 flex items-center justify-center">
-          <p className="text-foreground/30 font-sans text-lg">
-            {t.worksComingSoon}
-          </p>
-        </div>
-      </motion.div>
+      <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+        {works.map((work, index) => (
+          <WorkCard
+            key={work.id}
+            work={work}
+            index={index}
+            onClick={() => setSelected(work)}
+          />
+        ))}
+      </div>
 
+      <WorkDetailModal work={selected} onClose={() => setSelected(null)} />
     </section>
   );
 }

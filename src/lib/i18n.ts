@@ -10,7 +10,9 @@ export const translations = {
     teamSubtitle: "이 장난을 시작한 사람들",
     worksTitle: "작업물",
     worksSubtitle: "우리가 만든 것들",
-    worksComingSoon: "곧 공개됩니다",
+    worksVisit: "방문하기",
+    worksReleased: "출시",
+    worksClose: "닫기",
   },
   en: {
     tagline: "What started as play, became something real.",
@@ -21,6 +23,8 @@ export const translations = {
     teamSubtitle: "The ones who started it all",
     worksTitle: "What We Build",
     worksSubtitle: "From curiosity to creation",
-    worksComingSoon: "Coming soon",
+    worksVisit: "Visit",
+    worksReleased: "Released",
+    worksClose: "Close",
   },
 } as const;
