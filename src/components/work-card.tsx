@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
+import { useLocale } from "@/lib/locale-context";
 import type { Work } from "@/lib/works-data";
 
 export function WorkCard({
@@ -14,48 +15,60 @@ export function WorkCard({
   index: number;
   onClick: () => void;
 }) {
-  const [imageError, setImageError] = useState(false);
+  const { locale } = useLocale();
+  const [hovered, setHovered] = useState(false);
 
   return (
     <motion.button
       type="button"
       onClick={onClick}
-      className="group flex flex-col items-center cursor-pointer outline-none"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
+      className="group relative shrink-0 snap-center w-[78vw] max-w-[360px] md:w-[340px] lg:w-[380px] outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-background cursor-pointer"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
       transition={{
         duration: 0.8,
-        delay: index * 0.15,
+        delay: index * 0.1,
         ease: [0.16, 1, 0.3, 1],
       }}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
+      aria-label={`${work.name} — ${work.tagline[locale]}`}
     >
-      <div className="relative w-64 h-44 md:w-80 md:h-52 mb-5 overflow-hidden rounded-3xl border border-foreground/5 shadow-sm group-hover:shadow-lg transition-shadow duration-300">
-        <div
-          className={`absolute inset-0 transition-colors duration-300 ${work.accentClass}`}
-        />
-        {!imageError ? (
+      <motion.div
+        layoutId={`work-cover-${work.id}`}
+        className="relative w-full aspect-[3/5] overflow-hidden bg-white dark:bg-black"
+        style={{
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
+        }}
+        transition={{ type: "spring", stiffness: 240, damping: 30 }}
+      >
+        <motion.div
+          className="absolute inset-0"
+          animate={{ filter: hovered ? "grayscale(0)" : "grayscale(1)" }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        >
           <Image
-            src={work.thumbnail}
+            src={work.cover.light}
             alt={work.name}
             fill
-            sizes="(min-width: 768px) 320px, 256px"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            onError={() => setImageError(true)}
+            sizes="(min-width: 768px) 380px, 78vw"
+            className="object-contain block dark:hidden"
           />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-2xl md:text-3xl font-bold tracking-tight text-foreground/30">
-              {work.name}
-            </span>
-          </div>
-        )}
-      </div>
-      <h3 className="text-xl md:text-2xl font-bold tracking-tight">
-        {work.name}
-      </h3>
+          <Image
+            src={work.cover.dark}
+            alt={work.name}
+            fill
+            sizes="(min-width: 768px) 380px, 78vw"
+            className="object-contain hidden dark:block"
+          />
+        </motion.div>
+      </motion.div>
     </motion.button>
   );
 }
