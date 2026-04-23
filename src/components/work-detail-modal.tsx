@@ -8,8 +8,6 @@ import { useLocale } from "@/lib/locale-context";
 import type { Work } from "@/lib/works-data";
 import { GlassButton } from "./glass-button";
 
-const MORPH = { type: "spring", stiffness: 260, damping: 32 } as const;
-
 export function WorkDetailModal({
   work,
   onClose,
@@ -41,29 +39,25 @@ export function WorkDetailModal({
           className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 md:p-10"
           role="dialog"
           aria-modal="true"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.div
+          <div
             className="absolute inset-0 bg-background/75 backdrop-blur-xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.2 } }}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             onClick={onClose}
           />
 
-          <div className="relative w-full max-w-5xl max-h-full overflow-y-auto">
+          <motion.div
+            className="relative w-full max-w-5xl max-h-full overflow-y-auto"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.97 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="relative flex flex-col md:flex-row rounded-[24px] overflow-hidden bg-background border border-foreground/10 shadow-2xl">
-              <motion.div
-                layoutId={`work-cover-${work.id}`}
-                className="relative w-full md:w-1/2 aspect-[3/5] md:aspect-auto md:min-h-[560px] overflow-hidden bg-white dark:bg-black shrink-0"
-                style={{
-                  borderTopLeftRadius: 24,
-                  borderTopRightRadius: 24,
-                  borderBottomLeftRadius: 0,
-                  borderBottomRightRadius: 0,
-                }}
-                transition={MORPH}
-              >
+              <div className="relative w-full md:w-1/2 aspect-[3/5] md:aspect-auto md:min-h-[560px] overflow-hidden bg-white dark:bg-black shrink-0">
                 <Image
                   src={work.cover.light}
                   alt={work.name}
@@ -80,22 +74,9 @@ export function WorkDetailModal({
                   className="object-contain hidden dark:block"
                   priority
                 />
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="flex-1 flex flex-col justify-center gap-4 p-6 sm:p-10 md:p-12"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.12, delay: 0 },
-                }}
-                transition={{
-                  duration: 0.35,
-                  delay: 0.18,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              >
+              <div className="flex-1 flex flex-col justify-center gap-4 p-6 sm:p-10 md:p-12">
                 <p className="text-[10px] sm:text-xs text-foreground/50 font-sans tracking-[0.22em] uppercase">
                   {work.kind[locale]} · {t.worksReleased} {work.releaseDate}
                 </p>
@@ -130,25 +111,18 @@ export function WorkDetailModal({
                     <ExternalLink className="w-4 h-4 opacity-70" />
                   </GlassButton>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.button
+              <button
                 type="button"
                 onClick={onClose}
                 aria-label={t.worksClose}
                 className="absolute top-3 right-3 md:top-4 md:right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-background/80 hover:bg-foreground/10 border border-foreground/10 backdrop-blur-md text-foreground/80 hover:text-foreground transition-colors cursor-pointer"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.1, delay: 0 },
-                }}
-                transition={{ duration: 0.25, delay: 0.2 }}
               >
                 <X className="w-4 h-4" />
-              </motion.button>
+              </button>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

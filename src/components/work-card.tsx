@@ -37,17 +37,7 @@ export function WorkCard({
       }}
       aria-label={`${work.name} — ${work.tagline[locale]}`}
     >
-      <motion.div
-        layoutId={`work-cover-${work.id}`}
-        className="relative w-full aspect-[3/5] overflow-hidden bg-white dark:bg-black"
-        style={{
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0,
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0,
-        }}
-        transition={{ type: "spring", stiffness: 240, damping: 30 }}
-      >
+      <div className="relative w-full aspect-[3/5] overflow-hidden bg-white dark:bg-black">
         <motion.div
           className="absolute inset-0"
           animate={{ filter: hovered ? "grayscale(0)" : "grayscale(1)" }}
@@ -68,7 +58,7 @@ export function WorkCard({
             className="object-contain hidden dark:block"
           />
         </motion.div>
-      </motion.div>
+      </div>
     </motion.button>
   );
 }
