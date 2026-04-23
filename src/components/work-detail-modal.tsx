@@ -34,18 +34,18 @@ export function WorkDetailModal({
   return (
     <AnimatePresence>
       {work && (
-        <motion.div
+        <div
           key={`modal-${work.id}`}
           className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 md:p-10"
           role="dialog"
           aria-modal="true"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div
-            className="absolute inset-0 bg-background/75 backdrop-blur-xl"
+          <motion.div
+            className="absolute inset-0 bg-background/70 backdrop-blur-md"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             onClick={onClose}
           />
 
@@ -54,7 +54,7 @@ export function WorkDetailModal({
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.97 }}
-            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="relative flex flex-col md:flex-row rounded-[24px] overflow-hidden bg-background border border-foreground/10 shadow-2xl">
               <div className="relative w-full md:w-1/2 aspect-[3/5] md:aspect-auto md:min-h-[560px] overflow-hidden bg-white dark:bg-black shrink-0">
@@ -123,7 +123,7 @@ export function WorkDetailModal({
               </button>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       )}
     </AnimatePresence>
   );

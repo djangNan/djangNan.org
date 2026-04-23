@@ -61,7 +61,7 @@ export const works: Work[] = [
       ko: "daily phrase는 매일 하나의 따뜻한 문장을 전해주는 앱입니다. 바쁜 하루 속, 잠깐의 쉼표가 되어줄 문장을 통해 나를 돌아보는 시간을 가져보세요.",
       en: "daily phrase sends you one gentle sentence each day. Amid the rush of the day, let a single line become a small pause — a moment to turn back toward yourself.",
     },
-    releaseDate: "2025.09",
+    releaseDate: "2025.06",
     url: "https://apps.apple.com/app/id6747974922",
     cover: {
       light: "/works/daily-phrase-light.png",
