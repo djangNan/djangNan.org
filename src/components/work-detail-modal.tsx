@@ -50,19 +50,19 @@ export function WorkDetailModal({
           />
 
           <motion.div
-            className="relative w-full max-w-5xl max-h-full overflow-y-auto"
+            className="relative w-full max-w-5xl h-[calc(100dvh-1.5rem)] sm:h-[calc(100dvh-3rem)] md:h-[min(720px,calc(100dvh-5rem))]"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.97 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative flex flex-col md:flex-row rounded-[24px] overflow-hidden bg-background border border-foreground/10 shadow-2xl">
-              <div className="relative w-full md:w-1/2 aspect-[3/5] md:aspect-auto md:min-h-[560px] overflow-hidden bg-white dark:bg-black shrink-0">
+            <div className="relative flex flex-col md:flex-row rounded-[24px] overflow-hidden bg-background border border-foreground/10 shadow-2xl h-full">
+              <div className="relative shrink-0 w-full h-[38dvh] sm:h-[44dvh] md:h-full md:w-auto md:aspect-[3/5] overflow-hidden bg-white dark:bg-black">
                 <Image
                   src={work.cover.light}
                   alt={work.name}
                   fill
-                  sizes="(min-width: 768px) 560px, 100vw"
+                  sizes="(min-width: 768px) 45vw, 100vw"
                   className="object-contain block dark:hidden"
                   priority
                 />
@@ -70,40 +70,40 @@ export function WorkDetailModal({
                   src={work.cover.dark}
                   alt={work.name}
                   fill
-                  sizes="(min-width: 768px) 560px, 100vw"
+                  sizes="(min-width: 768px) 45vw, 100vw"
                   className="object-contain hidden dark:block"
                   priority
                 />
               </div>
 
-              <div className="flex-1 flex flex-col justify-center gap-4 p-6 sm:p-10 md:p-12">
+              <div className="flex-1 min-w-0 min-h-0 flex flex-col justify-center gap-3 sm:gap-4 p-5 sm:p-8 md:p-12 overflow-y-auto">
                 <p className="text-[10px] sm:text-xs text-foreground/50 font-sans tracking-[0.22em] uppercase">
                   {work.kind[locale]} · {t.worksReleased} {work.releaseDate}
                 </p>
                 <h3
-                  className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight"
+                  className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight"
                   style={{ fontFamily: "var(--font-serif), serif" }}
                 >
                   {work.name}
                 </h3>
                 <p
-                  className={`text-lg sm:text-xl md:text-2xl text-foreground/80 font-light leading-snug ${
+                  className={`text-base sm:text-xl md:text-2xl text-foreground/80 font-light leading-snug ${
                     locale === "ko" ? "font-serif" : "font-sans"
                   }`}
                 >
                   {work.tagline[locale]}
                 </p>
-                <p className="text-sm md:text-base text-foreground/60 font-sans leading-relaxed">
+                <p className="text-[13px] sm:text-sm md:text-base text-foreground/60 font-sans leading-relaxed">
                   {work.description[locale]}
                 </p>
-                <div className="mt-2">
+                <div className="mt-1 sm:mt-2">
                   <GlassButton
                     as="a"
-                    size="lg"
+                    size="sm"
                     href={work.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:bg-orange-50/50 dark:hover:bg-orange-950/20 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]"
+                    className="md:text-base md:px-6 md:py-3 hover:bg-orange-50/50 dark:hover:bg-orange-950/20 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
