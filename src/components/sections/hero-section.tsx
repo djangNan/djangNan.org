@@ -33,7 +33,7 @@ export function HeroSection() {
       </div>
 
       <div className="z-10 flex flex-col items-center text-center px-6">
-        <h1 className="text-7xl md:text-9xl font-bold tracking-tight mb-12">
+        <h1 className="text-7xl md:text-9xl font-bold tracking-tight mb-12 whitespace-nowrap">
           {/* d */}
           <motion.span
             initial={{ opacity: 0, y: 20 }}
